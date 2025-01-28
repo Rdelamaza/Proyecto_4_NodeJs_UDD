@@ -1,14 +1,13 @@
+require ('dotenv').config();
 const express = require('express');
 const app = express();
-require ('dotenv').config();
+const reservasRoutes = require('./routes/reservas.routes.js');
 
-const clave = process.env.CLAVE;
 const port = process.env.PORT;
-console.log({clave});
-
-
 
 app.use(express.json());
+app.use(express.urlencoded({extended: true}));
+app.use("/api", reservasRoutes);
 app.listen(port, () => {
     console.log('Servidor iniciado en puerto', port);
 });
