@@ -1,0 +1,32 @@
+[
+  {
+    "id": "a51bd03b-13b6-478b-a516-5cf1cfdfba1b",
+    "cliente": "Juan PEREZ ",
+    "fecha_entrada": "2025-02-01",
+    "fecha_salida": "2025-02-05",
+    "tipo_habitacion": "doble",
+    "num_huespedes": 7,
+    "hotel": "Hotel ABC",
+    "estado": "confirmada"
+  },
+  {
+    "id": "fcc8cb6b-9138-4d08-8db8-3a89c7a4afdb",
+    "cliente": "Juan PEREZ ",
+    "fecha_entrada": "2025-02-01",
+    "fecha_salida": "2025-02-05",
+    "tipo_habitacion": "doble",
+    "num_huespedes": 7,
+    "hotel": "Hotel ABC",
+    "estado": "confirmada"
+  },
+  {
+    "id": "60b7f0cd-ab64-4032-baea-d959488c36e1",
+    "cliente": "Juan asdasg ",
+    "fecha_entrada": "2025-02-01",
+    "fecha_salida": "2025-02-05",
+    "tipo_habitacion": "doble",
+    "num_huespedes": 7,
+    "hotel": "Hotel ABC",
+    "estado": "confirmada"
+  }
+]

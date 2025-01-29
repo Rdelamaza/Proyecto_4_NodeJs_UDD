@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const reservasController = require('../controllers/reservas.controllers.js');
 
+
 router.post('/reservas', reservasController.crearReserva);
 router.get('/reservas', reservasController.obtenerTodasLasReservas);
 router.get('/reservas/:id', reservasController.obtenerReservaId);
