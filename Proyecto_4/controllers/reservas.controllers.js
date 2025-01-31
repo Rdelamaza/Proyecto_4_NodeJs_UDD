@@ -72,11 +72,13 @@ const obtenerReservaId = async (req, res) => {
 /// ACTUALIZAR RESERVA POR ID PUT
 const modificarReservaId = async (req, res) => {
     const reservas = leerReservas();
+   
     const index = reservas.findIndex(reserva => reserva.id == req.params.id);
 
     if (index === -1) {
         return res.status(404).send({mensaje: 'Reserva no encontrada'});
     }
+    const {cliente, fecha_entrada, fecha_salida, tipo_habitacion, num_huespedes, hotel, estado} = req.body;
 
     reservas[index] = {
         ...reservas[index],
@@ -97,6 +99,7 @@ const modificarReservaId = async (req, res) => {
 /// ELIMINAR RESERVA POR ID DELETE
 const eliminarReservaId = async (req, res) => {
     const reservas = leerReservas();
+    const {id} = req.params;
     const index = reservas.findIndex(reserva => reserva.id == id);
     if (index === -1) {
         return res.status(404).send({mensaje: 'Reserva no encontrada'});
@@ -112,6 +115,7 @@ const eliminarReservaId = async (req, res) => {
 /// OBTENER RESERVA POR HOTEL GET
 const obtenerReservaPorHotel = async (req, res) => {
     const reservas = leerReservas();
+    const {hotel} = req.params;
     const reservaFiltrada = reservas.filter(reserva => reserva.hotel.toLowerCase() == hotel.toLowerCase());
 
     if (reservaFiltrada.length === 0) {
@@ -122,25 +126,37 @@ const obtenerReservaPorHotel = async (req, res) => {
 
 
 
-/// OBTENER RESERVAS POR FECHA DE ENTRADA Y SALIDA GET
-const obtenerReservaPorFechas = async (req, res) => {  
+/// OBTENER RESERVAS POR FECHA DE ENTRADA GET
+const obtenerReservaPorFechaEntrada = async (req, res) => {  
     const reservas = leerReservas();
-
-    const reservaFiltradaPorFecha = reservas.filter(reserva => reserva.fecha_entrada == fecha_entrada && reserva.fecha_salida == fecha_salida);
-    if (reservaFiltrada.length === 0) {
+    const fecha_entrada = req.params.fecha_entrada;
+    const reservaFiltradaPorFechaEntrada = reservas.filter(reserva => reserva.fecha_entrada == fecha_entrada);
+    if (reservaFiltradaPorFechaEntrada.length === 0) {
         return res.status(404).send({mensaje: 'Reserva no encontrada'});
-    }
-    res.send({mensaje: 'Reserva encontrada', data: reservaFiltradaPorFecha});
+    }  
+    
 };
 
+///OBTENER RESERVAS POR FECHA DE SALIDA GET
 
+const obtenerReservaPorFechaSalida = async (req, res) => {
+    const reservas = leerReservas();
+    const fecha_salida = req.params.fecha_salida;
+    const reservaFiltradaPorFechaSalida = reservas.filter(reserva => reserva.fecha_salida == fecha_salida);
+
+    if (reservaFiltradaPorFechaSalida.length === 0) {
+        return res.status(404).send({mensaje: 'Reserva no encontrada'});
+    }
+    res.send({mensaje: 'Reserva encontrada', data: reservaFiltradaPorFechaSalida});
+}
 
 ///OBTENER RESERVAS POR TIPO DE HABITACION GET
 const obtenerReservaPorTipoHabitacion = async (req, res) => {
     const reservas = leerReservas();
+    const {tipo_habitacion} = req.params;
     const reservaFiltradaPorTipoHabitacion = reservas.filter(reserva => reserva.tipo_habitacion.toLowerCase() == tipo_habitacion.toLowerCase());
 
-    if (reservaFiltrada.length === 0) {
+    if (reservaFiltradaPorTipoHabitacion.length === 0) {
         return res.status(404).send({mensaje: 'Reserva no encontrada'});
     }
     res.send({mensaje: 'Reserva encontrada', data: reservaFiltradaPorTipoHabitacion});
@@ -151,9 +167,10 @@ const obtenerReservaPorTipoHabitacion = async (req, res) => {
 ///OBTENER RESERVAS POR ESTADO GET
 const obtenerReservaPorEstado = async (req, res) => {
     const reservas = leerReservas();
+    const {estado} = req.params;
     const reservaFiltradaPorEstado = reservas.filter(reserva => reserva.estado.toLowerCase() == estado.toLowerCase());
 
-    if (reservaFiltrada.length === 0) {
+    if (reservaFiltradaPorEstado.length === 0) {
         return res.status(404).send({mensaje: 'Reserva no encontrada'});
     }
     res.send({mensaje: 'Reserva encontrada', data: reservaFiltradaPorEstado});
@@ -164,9 +181,10 @@ const obtenerReservaPorEstado = async (req, res) => {
 ///OBTENER RESERVAS POR NUMERO DE HUESPEDES GET
 const obtenerReservaPorNumeroHuespedes = async (req, res) => {
     const reservas = leerReservas();
+    const {num_huespedes} = req.params;
     const reservaFiltradaPorNumeroHuespedes = reservas.filter(reserva => reserva.num_huespedes == num_huespedes);
 
-    if (reservaFiltrada.length === 0) {
+    if (reservaFiltradaPorNumeroHuespedes.length === 0) {
         return res.status(404).send({mensaje: 'Reserva no encontrada'});
     }
     res.send({mensaje: 'Reserva encontrada', data: reservaFiltradaPorNumeroHuespedes});
@@ -174,4 +192,4 @@ const obtenerReservaPorNumeroHuespedes = async (req, res) => {
 
 
 
-module.exports = {crearReserva, obtenerTodasLasReservas, modificarReservaId, eliminarReservaId, obtenerReservaId, obtenerReservaPorHotel,obtenerReservaPorFechas,obtenerReservaPorTipoHabitacion,obtenerReservaPorEstado,obtenerReservaPorNumeroHuespedes};
+module.exports = {crearReserva, obtenerTodasLasReservas, modificarReservaId, eliminarReservaId, obtenerReservaId, obtenerReservaPorHotel,obtenerReservaPorFechaEntrada,obtenerReservaPorFechaSalida,obtenerReservaPorTipoHabitacion,obtenerReservaPorEstado,obtenerReservaPorNumeroHuespedes};
