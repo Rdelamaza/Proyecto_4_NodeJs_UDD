@@ -130,11 +130,13 @@ const obtenerReservaPorHotel = async (req, res) => {
 const obtenerReservaPorFechaEntrada = async (req, res) => {  
     const reservas = leerReservas();
     const fecha_entrada = req.params.fecha_entrada;
-    const reservaFiltradaPorFechaEntrada = reservas.filter(reserva => reserva.fecha_entrada == fecha_entrada);
+    const reservaFiltradaPorFechaEntrada = reservas.filter(reserva => reserva.fecha_entrada === fecha_entrada);
+
     if (reservaFiltradaPorFechaEntrada.length === 0) {
         return res.status(404).send({mensaje: 'Reserva no encontrada'});
     }  
-    
+    res.send({mensaje: 'Reserva encontrada', data: reservaFiltradaPorFechaEntrada});
+
 };
 
 ///OBTENER RESERVAS POR FECHA DE SALIDA GET
@@ -142,7 +144,7 @@ const obtenerReservaPorFechaEntrada = async (req, res) => {
 const obtenerReservaPorFechaSalida = async (req, res) => {
     const reservas = leerReservas();
     const fecha_salida = req.params.fecha_salida;
-    const reservaFiltradaPorFechaSalida = reservas.filter(reserva => reserva.fecha_salida == fecha_salida);
+    const reservaFiltradaPorFechaSalida = reservas.filter(reserva => reserva.fecha_salida === fecha_salida);
 
     if (reservaFiltradaPorFechaSalida.length === 0) {
         return res.status(404).send({mensaje: 'Reserva no encontrada'});
