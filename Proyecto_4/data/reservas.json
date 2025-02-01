@@ -1,12 +1,1 @@
-[
-  {
-    "id": "41b550b6-a3c0-4074-b7fd-e2973a859807",
-    "cliente": "Juan PEREZ ",
-    "fecha_entrada": "2025-02-01",
-    "fecha_salida": "2025-02-05",
-    "tipo_habitacion": "doble",
-    "num_huespedes": 7,
-    "hotel": "Hotel ABC",
-    "estado": "confirmada"
-  }
-]
+[]
