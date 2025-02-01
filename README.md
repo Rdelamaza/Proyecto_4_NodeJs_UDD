@@ -1,7 +1,7 @@
 PROYECTO 4: Reservas Hoteleras
 
 
-Construirás una aplicación de servicios para la gestión de reservas en hoteles que involucre las 4 operaciones CRUD y otras 6 adicionales relacionadas con filtros, utilizando Node.js y Express.
+Se construye una aplicación de servicios para la gestión de reservas en hoteles que involucre las 4 operaciones CRUD y otras 6 adicionales relacionadas con filtros, utilizando Node.js y Express.
 
 
 Características del proyecto:
